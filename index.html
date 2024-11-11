@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>hi welcome to my site </h2>
+    <app-adithyan name="rithvik"></app-adithyan>
+    <app-age dd-mm-yyyy="30-04-1994"></app-age>
+    <div id="eventOutput"></div>
+
+
+    <script>
+class HeadingComp extends HTMLElement{
+    connectedCallback(){
+        const name = this.getAttribute('name');
+        this.innerHTML = `
+    //      <style>
+    //     h3 {
+    //       font-size: 1.2em;
+    //       color:#7fff00;
+    //       padding: 10px;
+    //       background: #00ffff;
+    //       border: 1px solid #ddd;
+    //       border-radius: 5px;
+    //     }
+    //   </style>
+      <h3>Hello, ${name}! Glad to have you here.</h3>`;
+
+      
+    }
+}
+customElements.define('app-adithyan', HeadingComp);
+
+document.addEventListener('greetingEvent', (event) => {
+       
+        const output = event.detail.message;
+       
+        document.getElementById('eventOutput').innerHTML = `<p>${output}</p>`;
+      });
+    </script>
+</body>
+</html>
